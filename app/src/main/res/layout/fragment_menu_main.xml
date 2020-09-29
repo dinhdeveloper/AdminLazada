@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg_admin"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_header"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/layoutMenuAdmin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    tools:visibility="visible">
+
+                    <RelativeLayout
+                        android:id="@+id/btnProductManager"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/dinh_bg_admin_main_menu"
+                        android:clickable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:visibility="visible"
+                        tools:visibility="visible">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_dinh_statistic_management"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="80dp"
+                            android:text="Quản lý sản phẩm"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            app:tint="@color/gray" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btnServiceManager"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/dinh_bg_admin_main_menu"
+                        android:clickable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:visibility="visible"
+                        tools:visibility="visible">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_dinh_product_management"/>
+
+                        <TextView
+                            android:id="@+id/tvBtnServiceManagerTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="80dp"
+                            android:text="Quản lý sản phẩm nhập"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            app:tint="@color/gray" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/tvBtnProductExportManager"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/dinh_bg_admin_main_menu"
+                        android:clickable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:visibility="visible"
+                        tools:visibility="visible">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_dinh_customer_manager" />
+
+                        <TextView
+                            android:id="@+id/tvCustomerManager"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="80dp"
+                            android:text="Quản lý sản phẩm xuất"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            app:tint="@color/gray" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btnPriceExport"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/dinh_bg_admin_main_menu"
+                        android:clickable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:visibility="visible"
+                        tools:visibility="visible">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_dinh_statistic_management" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="80dp"
+                            android:text="Tiền phải trả"
+                            android:layout_marginRight="40dp"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            app:tint="@color/gray" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btnEmployeeManager"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/dinh_bg_admin_main_menu"
+                        android:clickable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:visibility="visible"
+                        tools:visibility="visible">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_dinh_employee_management" />
+
+                        <TextView
+                            android:id="@+id/tvBtnEmployeeManagerTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="80dp"
+                            android:text="Thống kê nhập"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            app:tint="@color/gray" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btnSlideManager"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/dinh_bg_admin_main_menu"
+                        android:clickable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:visibility="visible"
+                        tools:visibility="visible">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_dinh_slide_management" />
+
+                        <TextView
+                            android:id="@+id/tvSlideManagerTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="80dp"
+                            android:layout_marginRight="40dp"
+                            android:text="Thống kê xuất"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            app:tint="@color/gray" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btnPostManager"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/dinh_bg_admin_main_menu"
+                        android:clickable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:visibility="visible"
+                        tools:visibility="visible">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_dinh_post_management" />
+
+                        <TextView
+                            android:id="@+id/tvPostManagerTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="80dp"
+                            android:text="Doanh thu từng sản phẩm"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            app:tint="@color/gray" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btnOrderManager"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/dinh_bg_admin_main_menu"
+                        android:clickable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:visibility="visible"
+                        tools:visibility="visible">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_dinh_order_management" />
+
+                        <TextView
+                            android:id="@+id/tvBtnOrderManagerTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="80dp"
+                            android:text="Doanh thu theo tháng"
+                            android:layout_marginRight="40dp"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            app:tint="@color/gray" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
