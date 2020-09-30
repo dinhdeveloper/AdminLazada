@@ -54,4 +54,39 @@ public class MainActivity extends AppCompatActivity {
         }, 2000);
     }
 
+    private int isShowContainer = 0;
+    public void checkBack() {
+        if (isShowContainer > 0) {
+            isShowContainer--;
+            FragmentManager fm = getSupportFragmentManager();
+            if (fm.getBackStackEntryCount() > 0) {
+                fm.popBackStack();
+            }
+
+            if (isShowContainer == 0) {
+//                if (listProductOrder != null) {
+//                    int countItemOrder = countOrderProduct();
+//                    if (countItemOrder > 0) {
+//                        view.setBadgeCart(countItemOrder);
+//                    }
+//
+//
+//                }
+            }
+
+        } else {
+            checkFragment();
+        }
+    }
+    private void checkFragment() {
+
+        FragmentManager fm = getSupportFragmentManager();
+
+        if (fm.getBackStackEntryCount() > 0) {
+            fm.popBackStack();
+
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

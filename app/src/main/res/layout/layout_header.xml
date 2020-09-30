@@ -9,6 +9,7 @@
 
     <ImageView
         android:id="@+id/btnBackHeader"
+        android:padding="7dp"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_centerVertical="true"

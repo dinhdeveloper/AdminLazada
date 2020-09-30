@@ -7,6 +7,8 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import com.canhdinh.lib.alert.AlertError;
 import com.dinh.thuhuyen.R;
+import com.dinh.thuhuyen.fragment.product.ListProductFragment;
 
 import java.text.DecimalFormat;
 
@@ -40,6 +43,7 @@ public class MenuMainFragment extends Fragment {
             btnOrderManager;
     private TextView tvTitleHeader;
     private ImageView btnBackHeader;
+
     public MenuMainFragment() {
         // Required empty public constructor
     }
@@ -82,13 +86,18 @@ public class MenuMainFragment extends Fragment {
     }
 
     private void addEvent() {
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
         btnBackHeader.setVisibility(View.INVISIBLE);
 
         tvTitleHeader.setText("Trang chủ");
         if (isNetworkConnected()) {
             //danh sách sản phẩm
             btnProductManager.setOnClickListener(view -> {
-
+                ListProductFragment productFragment = new ListProductFragment();
+                ft.add(R.id.layoutRoot, productFragment);
+                ft.addToBackStack(null);
+                ft.commit();
             });
             // san pham nhap
             btnServiceManager.setOnClickListener(view -> {
@@ -103,7 +112,7 @@ public class MenuMainFragment extends Fragment {
 
             });
         } else {
-            AlertError.showAlertError(getContext(),"Xác nhận","Lỗi kết nối mạng");
+            AlertError.showAlertError(getContext(), "Xác nhận", "Lỗi kết nối mạng");
         }
     }
 

@@ -1,5 +1,7 @@
 package com.dinh.thuhuyen.api;
 
+import com.dinh.thuhuyen.model.ProductModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +13,8 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIService {
-//    @GET("category/list")
-//    Call<List<Category>> getAllCategory();
+    @GET("product/list")
+    Call<List<ProductModel>> getAllProductModel();
 //
 //    @GET("product/list")
 //    Call<List<Product>> getAllProduct();
