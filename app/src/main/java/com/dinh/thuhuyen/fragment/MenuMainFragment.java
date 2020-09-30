@@ -94,10 +94,10 @@ public class MenuMainFragment extends Fragment {
         if (isNetworkConnected()) {
             //danh sách sản phẩm
             btnProductManager.setOnClickListener(view -> {
-                ListProductFragment productFragment = new ListProductFragment();
-                ft.add(R.id.layoutRoot, productFragment);
-                ft.addToBackStack(null);
-                ft.commit();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.layoutRoot, new ListProductFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
             });
             // san pham nhap
             btnServiceManager.setOnClickListener(view -> {

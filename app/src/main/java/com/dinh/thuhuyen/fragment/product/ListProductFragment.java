@@ -31,7 +31,7 @@ public class ListProductFragment extends Fragment implements LifecycleOwner {
     private RecyclerView recycler_view_list;
     private TextView tvTitleHeader;
     private ImageView btnBackHeader;
-
+    MainActivity activity;
     private ProductViewModel productViewModel;
 
     public ListProductFragment() {
@@ -47,11 +47,11 @@ public class ListProductFragment extends Fragment implements LifecycleOwner {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_list_product, container, false);
-
+        activity = (MainActivity)getActivity();
         addControls(view);
         addEvents();
         btnBackHeader.setOnClickListener(view1 -> {
-
+            activity.checkBack();
         });
         tvTitleHeader.setText("Danh sách sản phẩm");
         return view;
@@ -68,11 +68,10 @@ public class ListProductFragment extends Fragment implements LifecycleOwner {
 
             productAdapter.setListener(model -> {
                 productViewModel.setSelectedItem(model);
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                ProductDetailFragment productFragment = new ProductDetailFragment();
-                ft.replace(R.id.layoutRoot, productFragment);
-                ft.commit();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.layoutRoot, new ProductDetailFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
             });
         });
     }

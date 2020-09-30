@@ -1,14 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.product.ProductDetailFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:toggle="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".fragment.product.ListProductFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/tv_title"
+    <include layout="@layout/layout_header"/>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
 
-</FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:drawablePadding="5dp"
+                    android:text="Mã sản phẩm(*):"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/colorPrimary" />
+
+            <EditText
+                android:id="@+id/edt_id_code"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/black"
+                android:gravity="center_vertical"
+                android:hint="Nhập mã sản phẩm"
+                android:inputType="textNoSuggestions"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/gray" />
+
+        </LinearLayout>
+        <!--end-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:drawablePadding="5dp"
+                    android:text="Tên sản phẩm(*):"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/colorPrimary" />
+
+            <EditText
+                android:id="@+id/edt_name_product"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/black"
+                android:gravity="center_vertical"
+                android:hint="Nhập tên sản phẩm"
+                android:inputType="textNoSuggestions"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/gray" />
+
+        </LinearLayout>
+        <!--end-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:drawablePadding="5dp"
+                    android:text="Hình ảnh:"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <com.canhdinh.lib.roundview.RoundTextView
+                    android:id="@+id/btnSelecteImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginRight="20dp"
+                    android:drawableTint="@color/black"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="40dp"
+                    android:paddingVertical="@dimen/dp5"
+                    android:paddingRight="40dp"
+                    android:text="Chọn file"
+                    app:rv_strokeWidth="1dp"
+                    app:rv_strokeColor="@color/color_orange"
+                    app:rv_radius="@dimen/dp5"
+                    android:textColor="@color/color_orange"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imvAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/no_image_full" />
+        </RelativeLayout>
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/layoutStatusCustomer"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:background="@color/white"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Trạng thái"-->
+<!--                android:textColor="@color/colorPrimary"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <com.zcw.togglebutton.ToggleButton-->
+<!--                android:id="@+id/toggleStatus"-->
+<!--                android:layout_width="54dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginRight="20dp"-->
+<!--                toggle:tbAsDefaultOn="true"-->
+<!--                toggle:tbBorderWidth="2dp"-->
+<!--                toggle:tbOffBorderColor="@color/gray_very_light"-->
+<!--                toggle:tbOffColor="@color/gray_very_light"-->
+<!--                toggle:tbOnColor="@color/color_orange"-->
+<!--                toggle:tbSpotColor="@color/white" />-->
+<!--        </LinearLayout>-->
+<!--        &lt;!&ndash;end&ndash;&gt;-->
+
+        <View
+            android:background="@color/color_text_one"
+            android:layout_width="match_parent"
+            android:layout_height="1sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:paddingBottom="@dimen/dp20"
+            android:orientation="vertical">
+
+            <com.canhdinh.lib.roundview.RoundTextView
+                android:id="@+id/btnSubmit"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="Cập nhật"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:rv_backgroundColor="@color/color_orange"
+                app:rv_backgroundPressColor="#383838"
+                app:rv_radius="30dp"
+                app:rv_textPressColor="#ffffff"
+                tools:ignore="MissingPrefix" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
