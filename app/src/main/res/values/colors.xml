@@ -97,7 +97,7 @@
     <color name="yellow">#ffea00</color>
     <color name="button_background" tools:ignore="MissingDefaultResource">#023373</color>
     <color name="bg_placeholder">#dddddd</color>
-
+    <color name="placeholder_bg">#FFFCFC</color>
 
     <!--admin-->
     <color name="color_orange">#FF5722</color>

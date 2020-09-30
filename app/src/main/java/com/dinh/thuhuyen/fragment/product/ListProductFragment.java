@@ -24,6 +24,7 @@ import com.dinh.thuhuyen.activity.MainActivity;
 import com.dinh.thuhuyen.adapter.ListProductAdapter;
 import com.dinh.thuhuyen.model.ProductModel;
 import com.dinh.thuhuyen.viewmodel.ProductViewModel;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.List;
 
@@ -31,6 +32,9 @@ public class ListProductFragment extends Fragment implements LifecycleOwner {
     private RecyclerView recycler_view_list;
     private TextView tvTitleHeader;
     private ImageView btnBackHeader;
+
+    private ShimmerFrameLayout mShimmerFrameLayout;
+
     MainActivity activity;
     private ProductViewModel productViewModel;
 
@@ -66,6 +70,10 @@ public class ListProductFragment extends Fragment implements LifecycleOwner {
             recycler_view_list.setAdapter(productAdapter);
             productAdapter.notifyDataSetChanged();
 
+            //shimmerAnimation stop and hide
+            mShimmerFrameLayout.stopShimmer();
+            mShimmerFrameLayout.setVisibility(View.GONE);
+
             productAdapter.setListener(model -> {
                 productViewModel.setSelectedItem(model);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -80,5 +88,19 @@ public class ListProductFragment extends Fragment implements LifecycleOwner {
         recycler_view_list = view.findViewById(R.id.recycler_view_list);
         tvTitleHeader = view.findViewById(R.id.tvTitleHeader);
         btnBackHeader = view.findViewById(R.id.btnBackHeader);
+
+        mShimmerFrameLayout = view.findViewById(R.id.shimmer_view_product);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mShimmerFrameLayout.startShimmer();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mShimmerFrameLayout.stopShimmer();
     }
 }

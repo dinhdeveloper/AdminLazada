@@ -15,6 +15,10 @@ import retrofit2.http.Query;
 public interface APIService {
     @GET("product/list")
     Call<List<ProductModel>> getAllProductModel();
+
+    @POST("product/")
+    Call<ProductModel> updateProductModel(@Body ProductModel product);
+
 //
 //    @GET("product/list")
 //    Call<List<Product>> getAllProduct();

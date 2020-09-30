@@ -1,5 +1,6 @@
 package com.dinh.thuhuyen.fragment.product;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.canhdinh.lib.alert.AlertConfirmSuccess;
+import com.canhdinh.lib.alert.AlertError;
+import com.canhdinh.lib.alert.AlertSuccess;
 import com.canhdinh.lib.helper.MyLog;
 import com.canhdinh.lib.helper.MyToast;
 import com.canhdinh.lib.roundview.RoundTextView;
@@ -34,11 +38,13 @@ public class ProductDetailFragment extends Fragment implements LifecycleOwner {
 
     private TextView tvTitleHeader;
     private ImageView btnBackHeader;
-    private EditText edt_id_code,edt_name_product;
-    private RoundTextView btnSelecteImage,btnSubmit;
+    private EditText edt_id_code, edt_name_product;
+    private RoundTextView btnSelecteImage, btnSubmit;
     private ImageView imvAvatar;
 
     MainActivity activity;
+
+    private String id_product;
 
     public ProductDetailFragment() {
         // Required empty public constructor
@@ -49,13 +55,18 @@ public class ProductDetailFragment extends Fragment implements LifecycleOwner {
         super.onCreate(savedInstanceState);
         productViewModel = ViewModelProviders.of(requireActivity()).get(ProductViewModel.class);
         productViewModel.getSelectedItem().observe(this, model -> {
-            if (!TextUtils.isEmpty(model.getId_code())){
+            if (model != null) {
+                id_product = String.valueOf(model.getId());
+            }
+            if (!TextUtils.isEmpty(model.getId_code())) {
                 edt_id_code.setText(model.getId_code());
             }
-            if (!TextUtils.isEmpty(model.getName())){
+            if (!TextUtils.isEmpty(model.getName())) {
                 edt_name_product.setText(model.getName());
             }
+
         });
+
     }
 
     @Override
@@ -67,7 +78,7 @@ public class ProductDetailFragment extends Fragment implements LifecycleOwner {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activity = (MainActivity)getActivity();
+        activity = (MainActivity) getActivity();
 
         tvTitleHeader = view.findViewById(R.id.tvTitleHeader);
         btnBackHeader = view.findViewById(R.id.btnBackHeader);
@@ -80,6 +91,27 @@ public class ProductDetailFragment extends Fragment implements LifecycleOwner {
         tvTitleHeader.setText("Chi tiết sản phẩm");
         btnBackHeader.setOnClickListener(view1 -> {
             activity.checkBack();
+        });
+
+        btnSubmit.setOnClickListener(view1 -> {
+            ProductModel productModel = new ProductModel();
+            productModel.setId(Integer.valueOf(id_product));
+            if (!TextUtils.isEmpty(edt_id_code.getText().toString().trim())) {
+                productModel.setId_code(edt_id_code.getText().toString().trim());
+            }
+            if (!TextUtils.isEmpty(edt_name_product.getText().toString().trim())) {
+                productModel.setName(edt_name_product.getText().toString().trim());
+            }
+            productViewModel.updateProduct(productModel);
+
+            productViewModel.getUpdate().observe(this, aBoolean -> {
+                if (aBoolean.booleanValue()){
+                    AlertSuccess.showAlertSuccess(getContext(),"Xác nhận","Cập nhật thành công");
+                }
+                else if(!aBoolean.booleanValue()){
+                    AlertError.showAlertError(getContext(),"Lỗi","Cập nhật không thành công");
+                }
+            });
         });
     }
 }

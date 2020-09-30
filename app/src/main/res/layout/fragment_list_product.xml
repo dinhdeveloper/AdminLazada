@@ -10,6 +10,40 @@
 
     <include layout="@layout/layout_header"/>
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_product"
+        app:shimmer_colored="true"
+        app:shimmer_highlight_color="@color/white"
+        app:shimmer_base_color="@color/white"
+        app:shimmer_direction="left_to_right"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        app:shimmer_duration="800"
+        tools:ignore="MissingConstraints">
+
+        <!-- 3 rows added as a placeholders -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/product_animation" />
+
+            <include layout="@layout/product_animation" />
+
+            <include layout="@layout/product_animation" />
+
+            <include layout="@layout/product_animation" />
+
+            <include layout="@layout/product_animation" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
     <com.canhdinh.lib.roundview.RoundLinearLayout
         android:orientation="vertical"
         app:rv_backgroundColor="@color/white"

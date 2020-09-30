@@ -15,9 +15,10 @@ import java.util.List;
 public class ProductViewModel extends ViewModel {
     private MutableLiveData<List<ProductModel>> data = new MutableLiveData<>();
     private MutableLiveData<ProductModel> mSelectedItem = new MutableLiveData<>();
+    private MutableLiveData<Boolean> checkUpdate = new MutableLiveData<>();
     private ProductRepository repository = new ProductRepository();
 
-    public MutableLiveData<List<ProductModel>> init(){
+    public MutableLiveData<List<ProductModel>> init() {
         data = repository.getDataProduct();
         return data;
     }
@@ -28,5 +29,13 @@ public class ProductViewModel extends ViewModel {
 
     public void setSelectedItem(ProductModel selectedItem) {
         mSelectedItem.postValue(selectedItem);
+    }
+
+    public void updateProduct(ProductModel productModel) {
+        checkUpdate = repository.updateProduct(productModel);
+    }
+
+    public MutableLiveData<Boolean> getUpdate() {
+        return checkUpdate;
     }
 }
