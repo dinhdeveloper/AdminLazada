@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.canhdinh.lib.roundview.RoundLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:rv_strokeColor="@color/black"
+    app:rv_strokeWidth="1sp"
+    app:rv_radius="@dimen/dp5"
+    android:layout_margin="@dimen/dp5"
+    android:id="@+id/layout_item"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/image_item"
+        android:layout_gravity="center"
+        android:layout_width="99dp"
+        android:layout_height="98dp"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="@dimen/dp10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/name_item"
+            tools:text="San pham 1"
+            android:layout_marginVertical="@dimen/dp5"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_success"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/price_item"
+            tools:text="San pham 1"
+            android:layout_marginVertical="@dimen/dp5"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            android:textColor="@color/color_text_admin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</com.canhdinh.lib.roundview.RoundLinearLayout>
