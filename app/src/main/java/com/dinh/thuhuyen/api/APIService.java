@@ -1,5 +1,6 @@
 package com.dinh.thuhuyen.api;
 
+import com.dinh.thuhuyen.model.ColorModel;
 import com.dinh.thuhuyen.model.ProductModel;
 
 import java.util.ArrayList;
@@ -18,6 +19,12 @@ public interface APIService {
 
     @POST("product/")
     Call<ProductModel> updateProductModel(@Body ProductModel product);
+
+    @GET("color/list")
+    Call<List<ColorModel>> getAllColorModel();
+
+    @POST("color/")
+    Call<ColorModel> updateColorModel(@Body ColorModel color);
 
 //
 //    @GET("product/list")

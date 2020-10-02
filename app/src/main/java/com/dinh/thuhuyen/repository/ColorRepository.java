@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.dinh.thuhuyen.api.APIService;
 import com.dinh.thuhuyen.api.APIUntil;
-import com.dinh.thuhuyen.model.ProductModel;
+import com.dinh.thuhuyen.model.ColorModel;
 
 import java.util.List;
 
@@ -14,22 +14,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductRepository {
+public class ColorRepository {
     private APIService apiService = APIUntil.getServer();
 
-    public MutableLiveData<List<ProductModel>> getDataProduct() {
-        MutableLiveData<List<ProductModel>> data = new MutableLiveData<List<ProductModel>>();
+    public MutableLiveData<List<ColorModel>> getDataProduct() {
+        MutableLiveData<List<ColorModel>> data = new MutableLiveData<List<ColorModel>>();
 
-        apiService.getAllProductModel().enqueue(new Callback<List<ProductModel>>() {
+        apiService.getAllColorModel().enqueue(new Callback<List<ColorModel>>() {
             @Override
-            public void onResponse(Call<List<ProductModel>> call, Response<List<ProductModel>> response) {
+            public void onResponse(Call<List<ColorModel>> call, Response<List<ColorModel>> response) {
                 if (response.isSuccessful()) {
                     data.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<ProductModel>> call, Throwable t) {
+            public void onFailure(Call<List<ColorModel>> call, Throwable t) {
                 Log.e("onFailure", t.getMessage());
             }
         });
@@ -37,19 +37,19 @@ public class ProductRepository {
         return data;
     }
 
-    public MutableLiveData<Boolean> updateProduct(ProductModel model) {
+    public MutableLiveData<Boolean> updateProduct(ColorModel model) {
         MutableLiveData<Boolean> success = new MutableLiveData<Boolean>();
 
-        apiService.updateProductModel(model).enqueue(new Callback<ProductModel>() {
+        apiService.updateColorModel(model).enqueue(new Callback<ColorModel>() {
             @Override
-            public void onResponse(Call<ProductModel> call, Response<ProductModel> response) {
+            public void onResponse(Call<ColorModel> call, Response<ColorModel> response) {
                 if (response.isSuccessful()) {
                     success.setValue(true);
                 }
             }
 
             @Override
-            public void onFailure(Call<ProductModel> call, Throwable t) {
+            public void onFailure(Call<ColorModel> call, Throwable t) {
                 Log.e("onFailure", t.getMessage());
                 success.setValue(false);
             }

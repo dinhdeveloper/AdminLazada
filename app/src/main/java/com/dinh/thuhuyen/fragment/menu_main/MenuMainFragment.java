@@ -1,8 +1,6 @@
-package com.dinh.thuhuyen.fragment;
+package com.dinh.thuhuyen.fragment.menu_main;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 
@@ -19,6 +17,7 @@ import android.widget.TextView;
 
 import com.canhdinh.lib.alert.AlertError;
 import com.dinh.thuhuyen.R;
+import com.dinh.thuhuyen.fragment.color_import.ListColorImportFragment;
 import com.dinh.thuhuyen.fragment.product.ListProductFragment;
 
 import java.text.DecimalFormat;
@@ -101,7 +100,10 @@ public class MenuMainFragment extends Fragment {
             });
             // san pham nhap
             btnServiceManager.setOnClickListener(view -> {
-
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.layoutRoot, new ListColorImportFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
             });
             //san pham xuat
             tvBtnProductExportManager.setOnClickListener(view -> {

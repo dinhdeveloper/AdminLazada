@@ -1,13 +1,9 @@
-package com.dinh.thuhuyen.fragment.product;
+package com.dinh.thuhuyen.fragment.color_import;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,17 +14,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.canhdinh.lib.helper.MyToast;
 import com.dinh.thuhuyen.R;
 import com.dinh.thuhuyen.activity.MainActivity;
+import com.dinh.thuhuyen.adapter.ListColorImportAdapter;
 import com.dinh.thuhuyen.adapter.ListProductAdapter;
-import com.dinh.thuhuyen.model.ProductModel;
+import com.dinh.thuhuyen.fragment.product.ProductDetailFragment;
+import com.dinh.thuhuyen.viewmodel.ColorViewModel;
 import com.dinh.thuhuyen.viewmodel.ProductViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
-import java.util.List;
-
-public class ListProductFragment extends Fragment implements LifecycleOwner {
+public class ListColorImportFragment extends Fragment {
     private RecyclerView recycler_view_list;
     private TextView tvTitleHeader;
     private ImageView btnBackHeader;
@@ -36,9 +31,8 @@ public class ListProductFragment extends Fragment implements LifecycleOwner {
     private ShimmerFrameLayout mShimmerFrameLayout;
 
     MainActivity activity;
-    private ProductViewModel productViewModel;
-
-    public ListProductFragment() {
+    ColorViewModel colorViewModel;
+    public ListColorImportFragment() {
         // Required empty public constructor
     }
 
@@ -50,23 +44,21 @@ public class ListProductFragment extends Fragment implements LifecycleOwner {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_list_product, container, false);
-        activity = (MainActivity) getActivity();
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_color_import, container, false);
+        activity = (MainActivity)getActivity();
         addControls(view);
         addEvents();
+        btnBackHeader.setOnClickListener(view1 -> {
+            activity.checkBack();
+        });
+        tvTitleHeader.setText("Danh sách màu sắc");
         return view;
     }
 
     private void addEvents() {
-        btnBackHeader.setOnClickListener(view1 -> {
-            activity.checkBack();
-        });
-        tvTitleHeader.setText("Danh sách sản phẩm");
-
-        productViewModel = ViewModelProviders.of(requireActivity()).get(ProductViewModel.class);
-        productViewModel.init();
-        productViewModel.getData().observe(this, productModels -> {
-            ListProductAdapter productAdapter = new ListProductAdapter(getContext(), productModels);
+        colorViewModel = ViewModelProviders.of(requireActivity()).get(ColorViewModel.class);
+        colorViewModel.init().observe(this, productModels -> {
+            ListColorImportAdapter productAdapter = new ListColorImportAdapter(getContext(), productModels);
             recycler_view_list.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
             recycler_view_list.setHasFixedSize(true);
             recycler_view_list.setAdapter(productAdapter);
@@ -77,7 +69,7 @@ public class ListProductFragment extends Fragment implements LifecycleOwner {
             mShimmerFrameLayout.setVisibility(View.GONE);
 
             productAdapter.setListener(model -> {
-                productViewModel.setSelectedItem(model);
+                colorViewModel.setSelectedItem(model);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.layoutRoot, new ProductDetailFragment());
                 transaction.addToBackStack(null);

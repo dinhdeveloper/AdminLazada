@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.dinh.thuhuyen.R;
-import com.dinh.thuhuyen.fragment.MenuMainFragment;
+import com.dinh.thuhuyen.fragment.menu_main.MenuMainFragment;
 
 public class MainActivity extends AppCompatActivity {
 

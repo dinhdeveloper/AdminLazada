@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    tools:context=".fragment.product.ListProductFragment">
+
+    <include layout="@layout/layout_header"/>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_product"
+        app:shimmer_colored="true"
+        app:shimmer_highlight_color="@color/white"
+        app:shimmer_base_color="@color/white"
+        app:shimmer_direction="left_to_right"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        app:shimmer_duration="800"
+        tools:ignore="MissingConstraints">
+
+        <!-- 3 rows added as a placeholders -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/product_animation" />
+
+            <include layout="@layout/product_animation" />
+
+            <include layout="@layout/product_animation" />
+
+            <include layout="@layout/product_animation" />
+
+            <include layout="@layout/product_animation" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+    <com.canhdinh.lib.roundview.RoundLinearLayout
+        android:orientation="vertical"
+        app:rv_backgroundColor="@color/white"
+        app:rv_radius_top_left="@dimen/dp15"
+        app:rv_radius_top_right="@dimen/dp15"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_list"
+            android:layout_margin="@dimen/dp10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.canhdinh.lib.roundview.RoundLinearLayout>
+
+</LinearLayout>

@@ -18,10 +18,23 @@ public class ProductViewModel extends ViewModel {
     private MutableLiveData<Boolean> checkUpdate = new MutableLiveData<>();
     private ProductRepository repository = new ProductRepository();
 
-    public MutableLiveData<List<ProductModel>> init() {
-        data = repository.getDataProduct();
+//    public MutableLiveData<List<ProductModel>> init() {
+//        data = repository.getDataProduct();
+//        return data;
+//    }
+
+    public void init() {
+        if (this.data != null) {
+                data = repository.getDataProduct();
+            return;
+        }
+        this.data = new MutableLiveData<>();
+    }
+
+    public MutableLiveData<List<ProductModel>> getData() {
         return data;
     }
+
 
     public MutableLiveData<ProductModel> getSelectedItem() {
         return mSelectedItem;
